@@ -5,14 +5,14 @@ const ctx = canvas.getContext('2d');
 
 // Set canvas dimensions
 canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.height = window.innerHeight * 3;
 
 // Function to draw a smooth, dotted path
 function drawDottedPath(points) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = 'blue';
-    ctx.setLineDash([5, 15]); // Dotted line pattern
+    ctx.lineWidth = 10;
+    ctx.strokeStyle = '#ab895f';
+    ctx.setLineDash([40, 80]); // Dotted line pattern
 
     ctx.beginPath();
     ctx.moveTo(points[0].x, points[0].y);
@@ -38,8 +38,8 @@ function drawDottedPath(points) {
 const points = [
     { x: canvas.width / 3, y: 0 },
     { x: 3 * canvas.width / 4, y: canvas.height * 0.25 },
-    { x: canvas.width / 2, y: canvas.height * 0.5 },
-    { x: canvas.width / 4, y: canvas.height * 0.75 },
+    { x: canvas.width / 3, y: canvas.height * 0.5 },
+    { x: canvas.width / 4, y: canvas.height * 0.8 },
     { x: canvas.width / 2, y: canvas.height }
 ];
 
