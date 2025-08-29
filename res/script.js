@@ -34,6 +34,22 @@ function drawDottedPath(points) {
     ctx.stroke();
 }
 
+function addCastleImage() {
+    const img = new Image();
+    img.src = 'https://hc-cdn.hel1.your-objectstorage.com/s/v3/94151e3a53bfc76ce2a2937766e64798c1f932d9_image.png';
+
+    img.onload = function() {
+        const imgWidth = 265;
+        const imgHeight = 120;
+        const x = (canvas.width - imgWidth) / 2;
+        const y = canvas.height - imgHeight;
+        ctx.drawImage(img, x, y, imgWidth, imgHeight);
+    };
+}
+
+// Load and draw the castle image
+addCastleImage();
+
 // Points from top center to bottom center
 const points = [
     { x: canvas.width / 3, y: canvas.height * 0.1 },
