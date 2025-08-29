@@ -36,11 +36,11 @@ function drawDottedPath(points) {
 
 // Points from top center to bottom center
 const points = [
-    { x: canvas.width / 3, y: 0 },
+    { x: canvas.width / 3, y: canvas.height * 0.1 },
     { x: 3 * canvas.width / 4, y: canvas.height * 0.25 },
     { x: canvas.width / 3, y: canvas.height * 0.5 },
     { x: canvas.width / 4, y: canvas.height * 0.8 },
-    { x: canvas.width / 2, y: canvas.height }
+    { x: canvas.width / 2, y: canvas.height * 0.9 }
 ];
 
 // Draw the dotted path
