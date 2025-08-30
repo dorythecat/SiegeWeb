@@ -1,4 +1,5 @@
 const castleImageSrc = 'https://hc-cdn.hel1.your-objectstorage.com/s/v3/94151e3a53bfc76ce2a2937766e64798c1f932d9_image.png';
+const meepleImageSrc = 'https://hc-cdn.hel1.your-objectstorage.com/s/v3/0a2fc26201bcb2b02ef8aff23db1ed612b02b564_meeple_blue.png'
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -65,6 +66,27 @@ function addCastleImage(x, y, text) {
     img.onerror = () => { console.error('Failed to load image at ' + img.src); }
 }
 
+let meeple;
+function addMeeple(x, y) {
+    meeple = new Image();
+    meeple.src = meepleImageSrc;
+
+    meeple.onload = () => {
+        let imgWidth = meeple.width / 16;
+        let imgHeight = meeple.height / 16;
+        if (imgWidth > canvas.width / 12) {
+            imgWidth = canvas.width / 12;
+            imgHeight = (meeple.height / meeple.width) * imgWidth;
+        }
+        const imgX = x - imgWidth / 2;
+        const imgY = y - imgHeight / 2 - 20; // Make it walk above the path
+
+        ctx.drawImage(meeple, imgX, imgY, imgWidth, imgHeight);
+    }
+
+    meeple.onerror = () => { console.error('Failed to load image at ' + meeple.src); }
+}
+
 // Points from top center to bottom center
 const points = [
     { x: canvas.width / 3, y: canvas.height * 0.1 },
@@ -84,6 +106,8 @@ const texts = [
 
 // Draw the dotted path
 drawDottedPath(points);
+
+addMeeple(points[0].x, points[0].y); // Add before castles but after path
 
 for (let i = 0; i < points.length; i++) {
     addCastleImage(points[i].x, points[i].y, texts[i]);
