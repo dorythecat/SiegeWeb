@@ -79,7 +79,7 @@ function addMeeple(x, y) {
 // Move meeple smoothly along the path as the user scrolls
 window.addEventListener('scroll', () => {
     if (!meeple) return; // Ensure meeple is loaded
-    const scrollFraction = -0.5 * window.scrollY * points.length / (document.body.scrollHeight - window.innerHeight);
+    const scrollFraction = window.scrollY * points.length / (document.body.scrollHeight - window.innerHeight);
     const pointIndex = Math.min(Math.floor(scrollFraction), points.length - 1);
     const nextPointIndex = Math.min(pointIndex + 1, points.length - 1);
     const t = scrollFraction - pointIndex;
@@ -90,6 +90,35 @@ window.addEventListener('scroll', () => {
     meeple.style.left = (x - 25) + 'px';
     meeple.style.top = (y - 25) + 'px';
 });
+
+// Add the wavy bottom section
+function addWavyBottomSection() {
+    const section = document.createElement('section');
+    section.className = 'wavy-section';
+
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttribute('class', 'wavy-edge');
+    svg.setAttribute('viewBox', '0 0 1440 120');
+    svg.setAttribute('preserveAspectRatio', 'none');
+
+    // Make the wave taller
+    svg.style.width = '100%';
+    svg.style.height = '100%';
+
+    const path = document.createElementNS(svgNS, 'path');
+    path.setAttribute('fill', '#696969');
+    path.setAttribute('d', 'M0,96 C180,150 360,88 540,110 C720,140 900,88 1080,105 C1260,130 1380,92 1440,96 L1440,0 L0,0 Z');
+
+    svg.appendChild(path);
+    section.appendChild(svg);
+
+    const content = document.createElement('div');
+    content.textContent = 'Footer content';
+    section.appendChild(content);
+
+    document.body.appendChild(section);
+}
 
 // Points from top center to bottom center
 const points = [
@@ -116,3 +145,6 @@ for (let i = 0; i < points.length; i++) {
 }
 
 addMeeple(points[0].x, points[0].y);
+
+// Call once after your existing setup
+addWavyBottomSection();
