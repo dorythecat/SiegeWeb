@@ -1,4 +1,4 @@
-// Draw a smooth, dotted path on a canvas element
+const castleImageSrc = 'https://hc-cdn.hel1.your-objectstorage.com/s/v3/94151e3a53bfc76ce2a2937766e64798c1f932d9_image.png';
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -36,7 +36,7 @@ function drawDottedPath(points) {
 
 function addCastleImage(x, y, text) {
     const img = new Image();
-    img.src = 'https://hc-cdn.hel1.your-objectstorage.com/s/v3/94151e3a53bfc76ce2a2937766e64798c1f932d9_image.png';
+    img.src = castleImageSrc;
 
     img.onload = () => {
         let imgWidth = img.width / 2; // Scale down the image
