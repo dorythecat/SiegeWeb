@@ -39,15 +39,19 @@ function addCastleImage(x, y, text) {
     img.src = 'https://hc-cdn.hel1.your-objectstorage.com/s/v3/94151e3a53bfc76ce2a2937766e64798c1f932d9_image.png';
 
     img.onload = () => {
-        const imgWidth = img.width / 2; // Scale down the image
-        const imgHeight = img.height / 2;
+        let imgWidth = img.width / 2; // Scale down the image
+        let imgHeight = img.height / 2;
+        if (imgWidth > canvas.width / 3) {
+            imgWidth = canvas.width / 3; // Limit width to a third of canvas width
+            imgHeight = (img.height / img.width) * imgWidth; // Maintain aspect ratio
+        }
         const imgX = x - imgWidth / 2; // Center the image at (x, y)
         const imgY = y - imgHeight / 2;
 
         ctx.drawImage(img, imgX, imgY, imgWidth, imgHeight);
 
         if (text) {
-            ctx.font = '50px IM Fell English';
+            ctx.font = (imgWidth / text.length) + 'px IM Fell English';
             ctx.fillStyle = 'black';
             ctx.textAlign = 'center';
             ctx.fillText(text, x, imgY + imgHeight + 50); // Position text below the image
