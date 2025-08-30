@@ -46,6 +46,8 @@ function addCastleImage(x, y) {
 
         ctx.drawImage(img, imgX, imgY, imgWidth, imgHeight);
     }
+
+    img.onerror = () => { console.error('Failed to load image at ' + img.src); }
 }
 
 // Points from top center to bottom center
