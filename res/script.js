@@ -69,15 +69,10 @@ function addCastleImage(x, y, text) {
 let meeple;
 function addMeeple(x, y) {
     meeple = document.createElement('div');
-    meeple.style.position = 'absolute';
-    meeple.style.width = '50px';
-    meeple.style.height = '50px';
+    meeple.id = 'meeple';
     meeple.style.backgroundImage = `url(${meepleImageSrc})`;
-    meeple.style.backgroundSize = 'contain';
-    meeple.style.backgroundRepeat = 'no-repeat';
     meeple.style.left = (x - 25) + 'px';
     meeple.style.top = (y - 25) + 'px';
-    meeple.style.transition = 'left 0.1s ease, top 0.1s ease'; // Smooth transition
     document.body.appendChild(meeple);
 }
 

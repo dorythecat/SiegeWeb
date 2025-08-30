@@ -1,3 +1,12 @@
 body {
     background-image: url('https://hc-cdn.hel1.your-objectstorage.com/s/v3/c8e9d8db7fd3cb3657bc7686a499f79ca2edcd23_image.png');
 }
+
+#meeple {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: left 0.1s ease, top 0.1s ease;
+}
