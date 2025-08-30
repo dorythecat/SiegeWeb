@@ -74,9 +74,17 @@ const points = [
     { x: canvas.width / 2, y: canvas.height * 0.9 }
 ];
 
+const texts = [
+    "ship every week",
+    "vote on the\nbest projects",
+    "get prizes",
+    "ship all 12 weeks",
+    "get a framework"
+]
+
 // Draw the dotted path
 drawDottedPath(points);
 
 for (let i = 0; i < points.length; i++) {
-    addCastleImage(points[i].x, points[i].y, "Test");
+    addCastleImage(points[i].x, points[i].y, texts[i]);
 }
