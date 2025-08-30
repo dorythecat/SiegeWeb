@@ -54,7 +54,10 @@ function addCastleImage(x, y, text) {
             ctx.font = (imgWidth / text.length) + 'px IM Fell English';
             ctx.fillStyle = 'black';
             ctx.textAlign = 'center';
-            ctx.fillText(text, x, imgY + imgHeight + 50); // Position text below the image
+            text = text.split('\n');
+            for (let i = 0; i < text.length; i++) {
+                ctx.fillText(text[i], x, imgY + imgHeight + 50 + i * (imgWidth * 2 / text.length + 5)); // Position text below the image
+            }
         }
     }
 
