@@ -34,30 +34,32 @@ function drawDottedPath(points) {
     ctx.stroke();
 }
 
-function addCastleImage() {
+function addCastleImage(x, y) {
     const img = new Image();
     img.src = 'https://hc-cdn.hel1.your-objectstorage.com/s/v3/94151e3a53bfc76ce2a2937766e64798c1f932d9_image.png';
 
-    img.onload = function() {
-        const imgWidth = 265;
-        const imgHeight = 120;
-        const x = (canvas.width - imgWidth) / 2;
-        const y = canvas.height - imgHeight;
-        ctx.drawImage(img, x, y, imgWidth, imgHeight);
-    };
-}
+    img.onload = () => {
+        const imgWidth = img.width / 2; // Scale down the image
+        const imgHeight = img.height / 2;
+        const imgX = x - imgWidth / 2; // Center the image at (x, y)
+        const imgY = y - imgHeight / 2;
 
-// Load and draw the castle image
-addCastleImage();
+        ctx.drawImage(img, imgX, imgY, imgWidth, imgHeight);
+    }
+}
 
 // Points from top center to bottom center
 const points = [
     { x: canvas.width / 3, y: canvas.height * 0.1 },
-    { x: 3 * canvas.width / 4, y: canvas.height * 0.25 },
+    { x: 3 * canvas.width / 4, y: canvas.height * 0.3 },
     { x: canvas.width / 3, y: canvas.height * 0.5 },
-    { x: canvas.width / 4, y: canvas.height * 0.8 },
+    { x: canvas.width / 4, y: canvas.height * 0.7 },
     { x: canvas.width / 2, y: canvas.height * 0.9 }
 ];
 
 // Draw the dotted path
 drawDottedPath(points);
+
+for (let i = 0; i < points.length; i++) {
+    addCastleImage(points[i].x, points[i].y);
+}
