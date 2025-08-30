@@ -16,7 +16,7 @@ canvas {
     transition: left 0.1s ease, top 0.1s ease;
 }
 
-.wavy-section {
+.bottom-section {
     position: relative;
     background: rgba(0, 0, 0, 0);
     z-index: -1;
@@ -27,14 +27,14 @@ canvas {
     text-align: center;
     color: white;
 }
-.wavy-section p {
+.bottom-section p {
     position: relative;
     padding: 20px;
     font-size: 1.5em;
     transform: rotate(180deg);
     font-family: "IM Fell English", serif;
 }
-.wavy-section .wavy-edge {
+.bottom-section .bottom-edge {
     position: absolute;
     top: 0;
     left: 0;

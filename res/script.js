@@ -91,14 +91,13 @@ window.addEventListener('scroll', () => {
     meeple.style.top = (y - 25) + 'px';
 });
 
-// Add the wavy bottom section
-function addWavyBottomSection() {
+function addBottomSection() {
     const section = document.createElement('section');
-    section.className = 'wavy-section';
+    section.className = 'bottom-section';
 
     const svgNS = 'http://www.w3.org/2000/svg';
     const svg = document.createElementNS(svgNS, 'svg');
-    svg.setAttribute('class', 'wavy-edge');
+    svg.setAttribute('class', 'bottom-edge');
     svg.setAttribute('viewBox', '0 0 1440 120');
     svg.setAttribute('preserveAspectRatio', 'none');
 
@@ -147,4 +146,4 @@ for (let i = 0; i < points.length; i++) {
 addMeeple(points[0].x, points[0].y);
 
 // Call once after your existing setup
-addWavyBottomSection();
+addBottomSection();
