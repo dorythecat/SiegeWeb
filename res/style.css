@@ -72,3 +72,17 @@ canvas {
     height: 120px;
     display: block;
 }
+
+@media (max-width: 600px) {
+    .bottom-section {
+        min-height: 30vh;
+    }
+    .bottom-section p {
+        font-size: 1.2em;
+        bottom: 45%;
+    }
+    .bottom-section button {
+        font-size: 1.2em;
+        bottom: 35%;
+    }
+}
