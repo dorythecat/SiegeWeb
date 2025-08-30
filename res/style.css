@@ -32,12 +32,37 @@ canvas {
     fill: #696969;
     transform: rotate(180deg);
     z-index: -1;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    display: block;
 }
 .bottom-section p {
-    position: relative;
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
     padding: 20px;
     font-size: 1.5em;
     font-family: "IM Fell English", serif;
+}
+.bottom-section button {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #8D8D8D;
+    font-family: "IM Fell English", serif;
+    font-size: 1.5em;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.bottom-section button:hover {
+    background-color: #A9A9A9;
 }
 .bottom-section .bottom-edge {
     position: absolute;

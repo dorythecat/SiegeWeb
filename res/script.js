@@ -115,6 +115,14 @@ function addBottomSection() {
     content.textContent = "Are you ready to take up the challenge?";
     section.appendChild(content);
 
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = "RSVP Now";
+    button.addEventListener('click', () => {
+        window.location.assign('https://example.com/join');
+    });
+    section.appendChild(button);
+
     document.body.appendChild(section);
 }
 
