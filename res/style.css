@@ -23,19 +23,20 @@ canvas {
 .bottom-section {
     position: relative;
     background: rgba(0, 0, 0, 0);
-    z-index: -1;
-    min-height: 40vh;
+    min-height: 50vh;
     width: 100%;
-    overflow: hidden;
-    transform: rotate(180deg);
     text-align: center;
     color: white;
+}
+.bottom-section svg {
+    fill: #696969;
+    transform: rotate(180deg);
+    z-index: -1;
 }
 .bottom-section p {
     position: relative;
     padding: 20px;
     font-size: 1.5em;
-    transform: rotate(180deg);
     font-family: "IM Fell English", serif;
 }
 .bottom-section .bottom-edge {

@@ -106,7 +106,6 @@ function addBottomSection() {
     svg.style.height = '100%';
 
     const path = document.createElementNS(svgNS, 'path');
-    path.setAttribute('fill', '#696969');
     path.setAttribute('d', 'M0,96 C180,150 360,88 540,110 C720,140 900,88 1080,105 C1260,130 1380,92 1440,96 L1440,0 L0,0 Z');
 
     svg.appendChild(path);
