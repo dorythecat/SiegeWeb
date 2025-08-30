@@ -51,12 +51,13 @@ function addCastleImage(x, y, text) {
         ctx.drawImage(img, imgX, imgY, imgWidth, imgHeight);
 
         if (text) {
-            ctx.font = (imgWidth * 2 / text.length) + 'px IM Fell English';
             ctx.fillStyle = 'black';
             ctx.textAlign = 'center';
             text = text.split('\n');
+            const textLength = Math.max(...text.map(line => line.length));
+            ctx.font = (imgWidth * 2 / textLength) + 'px IM Fell English';
             for (let i = 0; i < text.length; i++) {
-                ctx.fillText(text[i], x, imgY + imgHeight + 50 + i * (imgWidth * 2 / text.length + 5)); // Position text below the image
+                ctx.fillText(text[i], x, imgY + imgHeight + 50 + i * (imgWidth * 2 / textLength));
             }
         }
     }
