@@ -113,8 +113,8 @@ function addWavyBottomSection() {
     svg.appendChild(path);
     section.appendChild(svg);
 
-    const content = document.createElement('div');
-    content.textContent = 'Footer content';
+    const content = document.createElement('p');
+    content.textContent = "Are you ready to take up the challenge?";
     section.appendChild(content);
 
     document.body.appendChild(section);

@@ -23,6 +23,16 @@ canvas {
     width: 100%;
     overflow: hidden;
     transform: rotate(180deg);
+    text-align: center;
+    color: white;
+}
+.wavy-section p {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    font-size: 1.5em;
+    transform: rotate(180deg);
+    font-family: "IM Fell English", serif;
 }
 .wavy-section .wavy-edge {
     position: absolute;
