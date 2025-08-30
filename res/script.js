@@ -51,7 +51,7 @@ function addCastleImage(x, y, text) {
         ctx.drawImage(img, imgX, imgY, imgWidth, imgHeight);
 
         if (text) {
-            ctx.font = (imgWidth / text.length) + 'px IM Fell English';
+            ctx.font = (imgWidth * 2 / text.length) + 'px IM Fell English';
             ctx.fillStyle = 'black';
             ctx.textAlign = 'center';
             text = text.split('\n');
