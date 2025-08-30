@@ -75,9 +75,9 @@ function addMeeple(x, y) {
     meeple.style.backgroundImage = `url(${meepleImageSrc})`;
     meeple.style.backgroundSize = 'contain';
     meeple.style.backgroundRepeat = 'no-repeat';
-    meeple.style.left = (x - 25) + 'px'; // Center the
-    meeple.style.top = (y - 25) + 'px'; // Center the
-    meeple.style.transition = 'left 0.3s ease, top 0.3s ease'; // Smooth transition
+    meeple.style.left = (x - 25) + 'px';
+    meeple.style.top = (y - 25) + 'px';
+    meeple.style.transition = 'left 0.1s ease, top 0.1s ease'; // Smooth transition
     document.body.appendChild(meeple);
 }
 
