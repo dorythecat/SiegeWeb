@@ -40,7 +40,7 @@ canvas {
 }
 .bottom-section p {
     position: absolute;
-    bottom: 100px;
+    bottom: 40%;
     width: 100%;
     padding: 20px;
     font-size: 1.5em;
@@ -48,7 +48,7 @@ canvas {
 }
 .bottom-section button {
     position: absolute;
-    bottom: 50px;
+    bottom: 30%;
     left: 50%;
     transform: translateX(-50%);
     background-color: #8D8D8D;
