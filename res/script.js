@@ -1,27 +1,8 @@
-// Assets origin
 const castleImageSrc = 'https://hc-cdn.hel1.your-objectstorage.com/s/v3/94151e3a53bfc76ce2a2937766e64798c1f932d9_image.png';
 const meepleImageSrc = 'https://hc-cdn.hel1.your-objectstorage.com/s/v3/0a2fc26201bcb2b02ef8aff23db1ed612b02b564_meeple_blue.png'
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-
-// Points for the path
-const points = [
-    { x: canvas.width / 3, y: canvas.height * 0.1 },
-    { x: 3 * canvas.width / 4, y: canvas.height * 0.3 },
-    { x: canvas.width / 3, y: canvas.height * 0.5 },
-    { x: canvas.width / 4, y: canvas.height * 0.7 },
-    { x: canvas.width / 2, y: canvas.height * 0.9 }
-];
-
-// Text for the castles
-const texts = [
-    "ship every week",
-    "vote on the\nbest projects",
-    "get prizes",
-    "ship all 12 weeks",
-    "get a framework"
-]
 
 // Set canvas dimensions
 canvas.width = window.innerWidth;
@@ -144,6 +125,24 @@ function addBottomSection() {
 
     document.body.appendChild(section);
 }
+
+// Points from top center to bottom center
+const points = [
+    { x: canvas.width / 3, y: canvas.height * 0.1 },
+    { x: 3 * canvas.width / 4, y: canvas.height * 0.3 },
+    { x: canvas.width / 3, y: canvas.height * 0.5 },
+    { x: canvas.width / 4, y: canvas.height * 0.7 },
+    { x: canvas.width / 2, y: canvas.height * 0.9 }
+];
+
+// Text for the castles
+const texts = [
+    "ship every week",
+    "vote on the\nbest projects",
+    "get prizes",
+    "ship all 12 weeks",
+    "get a framework"
+]
 
 // Draw the dotted path
 drawDottedPath(points);
