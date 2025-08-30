@@ -68,24 +68,36 @@ function addCastleImage(x, y, text) {
 
 let meeple;
 function addMeeple(x, y) {
-    meeple = new Image();
-    meeple.src = meepleImageSrc;
-
-    meeple.onload = () => {
-        let imgWidth = meeple.width / 16;
-        let imgHeight = meeple.height / 16;
-        if (imgWidth > canvas.width / 12) {
-            imgWidth = canvas.width / 12;
-            imgHeight = (meeple.height / meeple.width) * imgWidth;
-        }
-        const imgX = x - imgWidth / 2;
-        const imgY = y - imgHeight / 2 - 20; // Make it walk above the path
-
-        ctx.drawImage(meeple, imgX, imgY, imgWidth, imgHeight);
-    }
-
-    meeple.onerror = () => { console.error('Failed to load image at ' + meeple.src); }
+    meeple = document.createElement('div');
+    meeple.style.position = 'absolute';
+    meeple.style.width = '50px';
+    meeple.style.height = '50px';
+    meeple.style.backgroundImage = `url(${meepleImageSrc})`;
+    meeple.style.backgroundSize = 'contain';
+    meeple.style.backgroundRepeat = 'no-repeat';
+    meeple.style.left = (x - 25) + 'px'; // Center the
+    meeple.style.top = (y - 25) + 'px'; // Center the
+    meeple.style.transition = 'left 0.3s ease, top 0.3s ease'; // Smooth transition
+    document.body.appendChild(meeple);
 }
+
+// Move meeple smoothly along the path as the user scrolls
+window.addEventListener('scroll', () => {
+    if (!meeple) return; // Ensure meeple is loaded
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollFraction = scrollTop / docHeight;
+    const pathLength = points.length;
+    const pointIndex = Math.min(Math.floor(scrollFraction * pathLength), pathLength - 1);
+    const nextPointIndex = Math.min(pointIndex + 1, pathLength - 1);
+    const t = (scrollFraction * pathLength) - pointIndex;
+    const x = (1 - t) * points[pointIndex].x + t * points[nextPointIndex].x;
+    const y = (1 - t) * points[pointIndex].y + t * points[nextPointIndex].y;
+
+    // Move the meeple to its new position
+    meeple.style.left = (x - 25) + 'px';
+    meeple.style.top = (y - 25) + 'px';
+});
 
 // Points from top center to bottom center
 const points = [
@@ -107,8 +119,8 @@ const texts = [
 // Draw the dotted path
 drawDottedPath(points);
 
-addMeeple(points[0].x, points[0].y); // Add before castles but after path
-
 for (let i = 0; i < points.length; i++) {
     addCastleImage(points[i].x, points[i].y, texts[i]);
 }
+
+addMeeple(points[0].x, points[0].y);
