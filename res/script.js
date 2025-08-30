@@ -79,7 +79,7 @@ function addMeeple(x, y) {
 // Move meeple smoothly along the path as the user scrolls
 window.addEventListener('scroll', () => {
     if (!meeple) return; // Ensure meeple is loaded
-    const scrollFraction = window.scrollY * points.length / (document.body.scrollHeight - window.innerHeight);
+    const scrollFraction = -0.5 * window.scrollY * points.length / (document.body.scrollHeight - window.innerHeight);
     const pointIndex = Math.min(Math.floor(scrollFraction), points.length - 1);
     const nextPointIndex = Math.min(pointIndex + 1, points.length - 1);
     const t = scrollFraction - pointIndex;
