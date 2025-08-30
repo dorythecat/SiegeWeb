@@ -34,7 +34,7 @@ function drawDottedPath(points) {
     ctx.stroke();
 }
 
-function addCastleImage(x, y) {
+function addCastleImage(x, y, text) {
     const img = new Image();
     img.src = 'https://hc-cdn.hel1.your-objectstorage.com/s/v3/94151e3a53bfc76ce2a2937766e64798c1f932d9_image.png';
 
@@ -45,6 +45,13 @@ function addCastleImage(x, y) {
         const imgY = y - imgHeight / 2;
 
         ctx.drawImage(img, imgX, imgY, imgWidth, imgHeight);
+
+        if (text) {
+            ctx.font = '50px IM Fell English';
+            ctx.fillStyle = 'black';
+            ctx.textAlign = 'center';
+            ctx.fillText(text, x, imgY + imgHeight + 50); // Position text below the image
+        }
     }
 
     img.onerror = () => { console.error('Failed to load image at ' + img.src); }
@@ -63,5 +70,5 @@ const points = [
 drawDottedPath(points);
 
 for (let i = 0; i < points.length; i++) {
-    addCastleImage(points[i].x, points[i].y);
+    addCastleImage(points[i].x, points[i].y, "Test");
 }
