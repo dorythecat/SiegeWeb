@@ -155,3 +155,9 @@ addMeeple(points[0].x, points[0].y);
 
 // Call once after your existing setup
 addBottomSection();
+window.onscroll = () => {
+    if (window.scrollY >= window.innerHeight * 2) {
+        document.body.style.backgroundImage = '';
+        document.body.style.backgroundColor = '#696969';
+    }
+}
