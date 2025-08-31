@@ -158,6 +158,18 @@ function addBottomSection() {
     });
     section.appendChild(button);
 
+    // Add yubico logo
+    const yubico_logo = document.createElement('img');
+    yubico_logo.src = 'https://resources.yubico.com/53ZDUYE6/at/q2tsde-8kenzk-4cg1pz/Yubico_Logo_Big_PNG.png?auto=webp&format=png&width=100&height=28';
+    yubico_logo.height = 28;
+    yubico_logo.width = 100;
+    yubico_logo.alt = 'Yubico';
+    const yubico_logo_wrapper = document.createElement('a');
+    yubico_logo_wrapper.id = 'yubico-logo';
+    yubico_logo_wrapper.href = 'https://www.yubico.com';
+    yubico_logo_wrapper.appendChild(yubico_logo);
+    section.appendChild(yubico_logo_wrapper);
+
     document.body.appendChild(section);
 }
 

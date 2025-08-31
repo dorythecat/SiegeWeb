@@ -112,6 +112,19 @@ canvas {
     transform: scale(1.05);
 }
 
+#yubico-logo {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+#yubico-logo:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
 @media (max-width: 600px) {
     .bottom-section {
         min-height: 30vh;
