@@ -52,23 +52,14 @@ canvas {
     width: 100%;
     text-align: center;
     color: white;
-    z-index: -2;
-}
-.bottom-section svg {
-    fill: #696969;
-    transform: rotate(180deg);
-    bottom: calc(100% - 1px);
-    z-index: -1;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    display: block;
 }
 .bottom-section p {
     position: absolute;
     bottom: 40%;
     width: 100%;
     padding: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 1.5em;
     font-family: "IM Fell English", serif;
 }
@@ -92,11 +83,12 @@ canvas {
 }
 .bottom-section .bottom-edge {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 120px;
-    display: block;
+    height: 100%;
+    fill: #696969;
+    transform: rotate(180deg);
 }
 
 #hack-club-logo {

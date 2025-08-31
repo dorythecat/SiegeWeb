@@ -127,7 +127,7 @@ window.addEventListener('scroll', () => {
 });
 
 function addBottomSection() {
-    const section = document.createElement('section');
+    const section = document.createElement('div');
     section.className = 'bottom-section';
 
     const svgNS = 'http://www.w3.org/2000/svg';
@@ -135,10 +135,6 @@ function addBottomSection() {
     svg.setAttribute('class', 'bottom-edge');
     svg.setAttribute('viewBox', '0 0 1440 120');
     svg.setAttribute('preserveAspectRatio', 'none');
-
-    // Make the wave taller
-    svg.style.width = '100%';
-    svg.style.height = '100%';
 
     const path = document.createElementNS(svgNS, 'path');
     path.setAttribute('d', 'M0,96 C180,150 360,88 540,110 C720,140 900,88 1080,105 C1260,130 1380,92 1440,96 L1440,0 L0,0 Z');
