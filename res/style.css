@@ -14,10 +14,16 @@ body {
     overflow-x: hidden;
 }
 
-body h1 {
+#title {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    font-family: "IM Fell English", serif;
     text-align: center;
     color: black;
-    font-size: 30vw;
+    width: 50%;
+    transform: translateX(50%);
     min-height: 100vh;
     margin: 0;
     padding: 0;
