@@ -72,14 +72,14 @@ function addMeeple(x, y) {
     meeple.id = 'meeple';
     meeple.style.backgroundImage = `url(${meepleImageSrc})`;
     meeple.style.left = (x - 25) + 'px';
-    meeple.style.top = (y - 25) + 'px';
+    meeple.style.top = (y - 25 + window.innerHeight) + 'px';
     document.body.appendChild(meeple);
 }
 
 // Move meeple smoothly along the path as the user scrolls
 window.addEventListener('scroll', () => {
     if (!meeple) return; // Ensure meeple is loaded
-    const scrollFraction = window.scrollY * points.length / (document.body.scrollHeight - window.innerHeight);
+    const scrollFraction = Math.max((window.scrollY - window.innerHeight / 2), 0) * points.length / (document.body.scrollHeight - window.innerHeight);
     const pointIndex = Math.min(Math.floor(scrollFraction), points.length - 1);
     const nextPointIndex = Math.min(pointIndex + 1, points.length - 1);
     const t = scrollFraction - pointIndex;
@@ -88,7 +88,7 @@ window.addEventListener('scroll', () => {
 
     // Move the meeple to its new position
     meeple.style.left = (x - 25) + 'px';
-    meeple.style.top = (y - 25) + 'px';
+    meeple.style.top = (y - 25 + window.innerHeight) + 'px';
 });
 
 function addBottomSection() {
