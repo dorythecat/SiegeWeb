@@ -1,3 +1,4 @@
+const canvasBackgroundSrc = 'https://hc-cdn.hel1.your-objectstorage.com/s/v3/c8e9d8db7fd3cb3657bc7686a499f79ca2edcd23_image.png';
 const castleImageSrc = 'https://hc-cdn.hel1.your-objectstorage.com/s/v3/94151e3a53bfc76ce2a2937766e64798c1f932d9_image.png';
 const meepleImageSrc = 'https://hc-cdn.hel1.your-objectstorage.com/s/v3/0a2fc26201bcb2b02ef8aff23db1ed612b02b564_meeple_blue.png'
 
@@ -8,31 +9,67 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight * 3;
 
+// Overlay canvas so we don't overwrite the background with the path and castles
+const overlayCanvas = document.createElement('canvas');
+const overlayCtx = overlayCanvas.getContext('2d');
+overlayCanvas.width = canvas.width;
+overlayCanvas.height = canvas.height;
+overlayCanvas.style.position = 'absolute';
+overlayCanvas.style.left = '0';
+overlayCanvas.style.top = '100vh';
+overlayCanvas.style.pointerEvents = 'none';
+overlayCanvas.style.zIndex = '1';
+document.body.appendChild(overlayCanvas);
+
+// Clear the top section background
+function makeBackgroundImage() {
+    ctx.beginPath();
+
+    ctx.moveTo(0, 0);
+    ctx.bezierCurveTo(canvas.width / 4, 0, 3 * canvas.width / 4, 120, canvas.width, 0);
+    ctx.lineTo(canvas.width, canvas.height);
+    ctx.lineTo(0, canvas.height);
+    ctx.closePath();
+
+    const img = new Image();
+    img.src = canvasBackgroundSrc;
+    img.onload = () => {
+        ctx.fillStyle = ctx.createPattern(img, 'repeat');
+        ctx.fill();
+    }
+
+    img.onerror = () => {
+        console.error('Failed to load image at ' + img.src);
+        ctx.fillStyle = '#d3d3d3'; // Fallback color
+        ctx.fill();
+    }
+}
+
 // Function to draw a smooth, dotted path
 function drawDottedPath(points) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.lineWidth = 10;
-    ctx.strokeStyle = '#ab895f';
-    ctx.setLineDash([40, 80]); // Dotted line pattern
+    overlayCtx.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height);
+    overlayCtx.lineWidth = 10;
+    overlayCtx.strokeStyle = '#ab895f';
+    overlayCtx.setLineDash([40, 80]); // Dotted line pattern
 
-    ctx.beginPath();
-    ctx.moveTo(points[0].x, points[0].y);
+    overlayCtx.beginPath();
+    overlayCtx.moveTo(points[0].x, points[0].y);
 
     for (let i = 1; i < points.length - 2; i++) {
         const cpX = (points[i].x + points[i + 1].x) / 2;
         const cpY = (points[i].y + points[i + 1].y) / 2;
-        ctx.quadraticCurveTo(points[i].x, points[i].y, cpX, cpY);
+        overlayCtx.quadraticCurveTo(points[i].x, points[i].y, cpX, cpY);
     }
 
     // For the last two points
-    ctx.quadraticCurveTo(
+    overlayCtx.quadraticCurveTo(
         points[points.length - 2].x,
         points[points.length - 2].y,
         points[points.length - 1].x,
         points[points.length - 1].y
     );
 
-    ctx.stroke();
+    overlayCtx.stroke();
 }
 
 function addCastleImage(x, y, text) {
@@ -42,23 +79,23 @@ function addCastleImage(x, y, text) {
     img.onload = () => {
         let imgWidth = img.width / 2; // Scale down the image
         let imgHeight = img.height / 2;
-        if (imgWidth > canvas.width / 3) {
-            imgWidth = canvas.width / 3; // Limit width to a third of canvas width
+        if (imgWidth > overlayCanvas.width / 3) {
+            imgWidth = overlayCanvas.width / 3; // Limit width to a third of canvas width
             imgHeight = (img.height / img.width) * imgWidth; // Maintain aspect ratio
         }
         const imgX = x - imgWidth / 2; // Center the image at (x, y)
         const imgY = y - imgHeight / 2;
 
-        ctx.drawImage(img, imgX, imgY, imgWidth, imgHeight);
+        overlayCtx.drawImage(img, imgX, imgY, imgWidth, imgHeight);
 
         if (text) {
-            ctx.fillStyle = 'black';
-            ctx.textAlign = 'center';
+            overlayCtx.fillStyle = 'black';
+            overlayCtx.textAlign = 'center';
             text = text.split('\n');
             const textLength = Math.max(...text.map(line => line.length));
-            ctx.font = (imgWidth * 2 / textLength) + 'px IM Fell English';
+            overlayCtx.font = (imgWidth * 2 / textLength) + 'px IM Fell English';
             for (let i = 0; i < text.length; i++) {
-                ctx.fillText(text[i], x, imgY + imgHeight + 50 + i * (imgWidth * 2 / textLength));
+                overlayCtx.fillText(text[i], x, imgY + imgHeight + 50 + i * (imgWidth * 2 / textLength));
             }
         }
     }
@@ -143,6 +180,9 @@ const texts = [
     "ship all 12 weeks",
     "get a framework"
 ]
+
+// Initial drawing
+makeBackgroundImage();
 
 // Draw the dotted path
 drawDottedPath(points);
