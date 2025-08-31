@@ -17,8 +17,6 @@ overlayCanvas.height = canvas.height;
 overlayCanvas.style.position = 'absolute';
 overlayCanvas.style.left = '0';
 overlayCanvas.style.top = '100vh';
-overlayCanvas.style.pointerEvents = 'none';
-overlayCanvas.style.zIndex = '1';
 document.body.appendChild(overlayCanvas);
 
 // Clear the top section background

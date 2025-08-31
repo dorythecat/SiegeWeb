@@ -43,7 +43,6 @@ canvas {
     background-size: contain;
     background-repeat: no-repeat;
     transition: left 0.1s ease, top 0.1s ease;
-    z-index: 1;
 }
 
 .bottom-section {
