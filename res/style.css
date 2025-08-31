@@ -124,6 +124,11 @@ canvas {
 }
 
 @media (max-width: 600px) {
+    #title {
+        width: 140vw;
+        margin: 0;
+        transform: translateX(-15%);
+    }
     .bottom-section {
         min-height: 30vh;
     }
