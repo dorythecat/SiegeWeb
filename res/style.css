@@ -17,6 +17,7 @@ canvas {
     background: url('https://hc-cdn.hel1.your-objectstorage.com/s/v3/c8e9d8db7fd3cb3657bc7686a499f79ca2edcd23_image.png');
     position: relative;
     margin-top: 100vh;
+    display: block;
 }
 
 #meeple {
@@ -35,13 +36,14 @@ canvas {
     width: 100%;
     text-align: center;
     color: white;
+    z-index: -2;
 }
 .bottom-section svg {
     fill: #696969;
     transform: rotate(180deg);
+    bottom: calc(100% - 1px);
     z-index: -1;
     position: absolute;
-    bottom: 100%;
     left: 0;
     width: 100%;
     display: block;
